@@ -1,0 +1,82 @@
+var http = require('http');
+
+var requestObj = {
+    "url": 'https://raw.githubusercontent.com/malekascha/chartDemo/master/trafficData2014_02_13.csv',
+    "method": 'GET'
+};
+
+var res = http.request(requestObj);
+
+var data = parseCSV(res.body);
+
+var uncompressedData = [];
+
+var labels;
+data.forEach(function(row, ind){
+  if(row.length < 9){
+    //avoid incomplete rows
+    return;
+  }
+  if (ind === 0){
+    labels = row;
+  } else {
+    uncompressedData.push([
+      dateFormatter(row[labels.indexOf('TIMESTAMP')]),
+      Number(row[labels.indexOf('avgSpeed')]),
+      Number(row[labels.indexOf('vehicleCount')])
+    ]);
+  }
+});
+
+var chartData = [[
+  'Time',
+  'Average\nSpeed',
+  '# of\nvehicles'
+]];
+
+var counter = 0;
+
+uncompressedData.reduce(function(a,b){
+  if(counter % 3){
+    a[0] = b[0];
+  }
+  a[1] = a[1] + b[1];
+  a[2] = a[2] + b[2];
+  if(counter % 5 === 0 && counter !== 0){
+    a[1] = a[1]/5;
+    a[2] = a[2]/5;
+    chartData.push(a);
+    counter++;
+    return b;
+  } else {
+    counter++;
+    return a;
+  }
+  
+});
+
+return chartData;
+
+function dateFormatter(date) {
+  var time = date.split('T')[1];
+  var parts = time.split(':');
+  return parts[0] + ':' + parts[1];
+}
+
+function parseCSV(s,sep) {
+  // http://stackoverflow.com/a/8932924/5708888
+  var universalNewline = /\r\n|\r|\n/g;
+  var a = s.split(universalNewline);
+  for(var i in a){
+      for (var f = a[i].split(sep = sep || ","), x = f.length - 1, tl; x >= 0; x--) {
+        if (f[x].replace(/"\s+$/, '"').charAt(f[x].length - 1) == '"') {
+            if ((tl = f[x].replace(/^\s+"/, '"')).length > 1 && tl.charAt(0) == '"') {
+                f[x] = f[x].replace(/^\s*"|"\s*$/g, '').replace(/""/g, '"');
+              } else if (x) {
+            f.splice(x - 1, 2, [f[x - 1], f[x]].join(sep));
+          } else f = f.shift().split(sep).concat(f);
+        } else f[x].replace(/""/g, '"');
+      } a[i] = f;
+  }
+  return a;
+}
