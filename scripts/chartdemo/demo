@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scriptr Chart Demo</title>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/chartdemo/styles" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Scriptr.io Google Charts Demo</h1>
+      <p>The charts on this page show traffic data collected by sensors in Aarhus, Denmark (<a href="http://iot.ee.surrey.ac.uk:8080/datasets.html">source</a>). All of the charts were created using <a href="//scriptr.io">Scriptr.io's</a> Google Charts editor, and this page is being served using Scriptr.io's HTML feature. The data for the charts can be found <a href="https://api.scriptrapps.io/chartdemo/trafficdata?auth_token=STlERTNEN0QyRA==">here</a>.</p>
+      <div class="row">
+          <h3>Area Chart</h3>
+          <a href="https://developers.google.com/chart/interactive/docs/gallery/areachart">Google Documentation</a>
+          <br>
+          <a href="https://jsfiddle.net/dlaliberte/a11ocfnL/">JSFiddle Example</a>
+          <br>
+          <iframe width="610px" height="400px" src="//malek.scriptrapps.io/chartdemo/areagraph" frameborder="0"></iframe>
+      </div>
+      <div class="row">
+          <h3>Scatter Chart</h3>
+          <a href="https://developers.google.com/chart/interactive/docs/gallery/scatterchart">Google Documentation</a>
+          <br>
+          <a href="http://jsfiddle.net/shanfan/u4ce6agx/">JSFiddle Example</a>
+          <br>
+          <iframe width="610px" height="400px" src="//malek.scriptrapps.io/chartdemo/scattergraph" frameborder="0"></iframe>
+      </div>
+      <div class="row">
+          <h3>Column Chart</h3>
+          <a href="https://developers.google.com/chart/interactive/docs/gallery/columnchart">Google Documentation</a>
+          <br>
+          <a href="http://jsfiddle.net/x8dafm9u/">JSFiddle Example</a>
+          <br>
+          <iframe width="610px" height="400px" src="//malek.scriptrapps.io/chartdemo/columngraph" frameborder="0"></iframe>
+      </div>
+      <div class="row">
+          <h3>Line Chart</h3>
+          <a href="https://developers.google.com/chart/interactive/docs/gallery/linechart">Google Documentation</a>
+          <br>
+          <a href="https://jsfiddle.net/dlaliberte/a11ocfnL/">JSFiddle Example</a>
+          <br>
+          <iframe width="610px" height="400px" src="//malek.scriptrapps.io/chartdemo/linegraph" frameborder="0"></iframe>
+      </div>
+      <div class="row">
+          <h3>Bar Chart</h3>
+          <a href="https://developers.google.com/chart/interactive/docs/gallery/barchart">Google Documentation</a>
+          <br>
+          <a href="http://jsfiddle.net/9hsp9107/5/">JSFiddle Example</a>
+          <br>
+          <iframe width="610px" height="400px" src="//malek.scriptrapps.io/chartdemo/bargraph" frameborder="0"></iframe>
+      </div>
+    </div>
+  </body>
+</html>
